@@ -1,2 +1,1 @@
-# This is a personal homepage for lanxuan
-everything is still updating...
+https://justlanxuan.github.io/
