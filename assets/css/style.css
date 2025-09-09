@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #header h1 {
   font-size: 48px;
-  margin-top: 0px;
+  margin-top: 30px;
   padding: 0;
   line-height: 1;
   font-weight: 700;
@@ -90,8 +90,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header img {
-  padding: 0;
-  margin: 0;
+  padding: auto;
+  margin: auto;
 }
 
 #header .social-links {
@@ -132,6 +132,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 50px
   }
 }
 
@@ -341,9 +342,9 @@ section .container {
 }
 
 .section-title h2 {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 500;
-  padding: 0;
+  padding: 10px;
   line-height: 1px;
   margin: 0 0 20px 0;
   letter-spacing: 2px;
