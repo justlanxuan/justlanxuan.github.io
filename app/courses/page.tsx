@@ -60,6 +60,16 @@ export default function CoursesPage() {
                   ) : (
                     <span className="course-title">{course.title}</span>
                   )}
+                  {course.note && (
+                    <a
+                      href={course.note}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 text-blue-600 underline text-sm"
+                    >
+                      笔记
+                    </a>
+                  )}
                   {course.displayTags && course.displayTags.length > 0 && (
                     <span className="tags">
                       {course.displayTags.map((t, k) => (
