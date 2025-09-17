@@ -61,7 +61,7 @@ export const courses = {
           title: "ELEC 1100 - Introduction to Electro-Robot Design",
           filterTags: ["EE", "Robotics"],
           displayTags: ["Arduino", "C++", "Hardware"],
-          note: "/notes/elec1100",
+          note: "/notes/elec1100.pdf",
         },
         {
           title: "MATH 1014 - Calculus II",
@@ -104,7 +104,7 @@ export const courses = {
           title: "COMP 3711H - Honors Design and Analysis of Algorithms",
           filterTags: ["CS"],
           displayTags: ["Algorithms"],
-          note: "/notes/comp3711h",
+          note: "/notes/comp3711h.pdf",
         },
         {
           title: "COMP 4462 - Data Visualization",
@@ -115,7 +115,7 @@ export const courses = {
             "JavaScript/TypeScript",
             "React/Next.js",
           ],
-          note: "/notes/comp4462",
+          note: "/notes/comp4462.pdf",
         },
         {
           title: "ELEC 2100 - Signals and Systems",
@@ -151,19 +151,19 @@ export const courses = {
           title: "COMP 2012 - Object-Oriented CS and Data Structures",
           filterTags: ["CS"],
           displayTags: ["C++", "Algorithm"],
-          note: "/notes/comp2012",
+          note: "/notes/comp2012.pdf",
         },
         {
           title: "COMP 2611 - Computer Organization",
           filterTags: ["CS"],
           displayTags: [],
-          note: "/notes/comp2611",
+          note: "/notes/comp2611.pdf",
         },
         {
           title: "COMP 3211 - Fundamentals of Artificial Intelligence",
           filterTags: ["AI"],
           displayTags: ["AI Algorithm", "Reinforcement Learning"],
-          note: "notes/comp3211",
+          note: "notes/comp3211.pdf",
         },
         {
           title: "ELEC 2400 - Electronic Circuits",
@@ -175,7 +175,7 @@ export const courses = {
           title: "ELEC 5680 - Advanced Deep Learning Architectures",
           filterTags: ["AI"],
           displayTags: ["CNN", "NLP/LLM", "Generative AI", "GNN"],
-          note: "/notes/comp5214",
+          note: "/notes/comp5214.pdf",
         },
         {
           title: "COMP 4971C - Independent Work ",
