@@ -1,5 +1,3 @@
-/** @format */
-
 // data/homepage.ts
 /** @format */
 
@@ -10,7 +8,7 @@ export const homepageData = {
   links: [
     {
       name: "GitHub",
-      url: "https://github.com/",
+      url: "https://github.com/justlanxuan/",
       icon: "github",
       external: true,
     },
@@ -24,9 +22,32 @@ export const homepageData = {
   ],
   news: [
     {
-      date: "2025-09",
-      text: "Started building my portfolio site with Next.js",
+      date: "2023-09",
+      text: "Start my studies at HKUST!",
     },
-    { date: "2025-07", text: "Completed a full-stack web project in school" },
+    { date: "2024-01", 
+      text: "Travel with friends at Shanghai and Beijing!" ,
+      link: "/posts/travel-shanghai-beijing",
+    },
+      
+    { date: "2024-06", 
+      text: "Research work on tactile sensor development." ,
+    },
+    { date: "2024-08", 
+      text: "Travel with friends at Malaysia!" ,
+    },
+    { date: "2025-01", 
+      text: "Travel with friends at Japan!" ,
+    },
+    { date: "2025-01", 
+      text: "Mathematical modeling competition with friends." ,
+    },
+    { date: "2025-05", 
+      text: "Attending ICRA!" ,
+    },
+    { date: "2025-06", 
+      text: "Summer exchange at Charles University in Prague!" ,
+    },
+
   ],
 };

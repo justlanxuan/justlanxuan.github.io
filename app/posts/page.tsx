@@ -1,5 +1,5 @@
 /** @format */
-
+import Link from "next/link";
 import { posts } from "@/data/posts";
 import PageLayout from "@/components/PageLayout";
 
@@ -8,12 +8,11 @@ export default function PostsPage() {
     <PageLayout title={posts.title}>
       {posts.items.map((post, i) => (
         <article key={i} className="post">
-          <h2 className="post-title">{post.title}</h2>
+          <h2 className="post-title">
+            <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+          </h2>
           <p className="post-date">{post.date}</p>
-          <div
-            className="post-content"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <p>{post.excerpt}</p>
         </article>
       ))}
     </PageLayout>

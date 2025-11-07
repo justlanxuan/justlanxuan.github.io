@@ -6,8 +6,8 @@ export const projects = {
     {
       title: "Tactile Sensor Development",
       description: "To be updated",
-      image: "project/tactile-sensor-cover.jpg", // 新增
-      link: "/tactile-sensor", // 新增
+      image: "project/tactile-sensor/tactile-sensor-cover.jpg",
+      link: "/tactile-sensor",
     },
     {
       title: "Data Visualization Dashboard",

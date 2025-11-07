@@ -9,7 +9,7 @@ export const about = {
     },
     {
       content:
-        "I’m passionate about building technologies that connect the digital and physical worlds. I especially enjoy prototyping—designing and creating machines that can interact not only with their environment but also with people.",
+        "I'm passionate about building technologies that connect the digital and physical worlds. I especially enjoy prototyping—designing and creating machines that can interact not only with their environment but also with people.",
     },
     {
       content:

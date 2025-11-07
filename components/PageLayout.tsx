@@ -5,12 +5,12 @@ export default function PageLayout({
   title,
   children,
 }: {
-  title: string;
+  title?: string;
   children: ReactNode;
 }) {
   return (
     <div className="page-layout">
-      <h1 className="page-title">{title}</h1>
+      {title && <h1 className="page-title">{title}</h1>}
       <div className="page-content">{children}</div>
     </div>
   );

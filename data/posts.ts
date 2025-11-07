@@ -1,19 +1,18 @@
 /** @format */
-
 export const posts = {
   title: "Posts",
-  items: [
-    {
-      title: "Why I love Oxygen Not Included 🎮",
-      date: "2025-09-01",
-      content:
-        "I've spent countless hours in <a href='https://www.klei.com/games/oxygen-not-included' target='_blank'>Oxygen Not Included</a>. The challenge of managing resources and keeping duplicants alive really sparks my curiosity about **simulation systems**.",
-    },
-    {
-      title: "Notes on Prototyping Interactive Hardware",
-      date: "2025-08-15",
-      content:
-        "Working with microcontrollers taught me a lot about the bridge between software and the physical world. I especially enjoy exploring **user interaction** and **feedback loops**.",
-    },
-  ],
+  items: [{
+    title: "北上游记",
+    date: "2024-01-06",
+    slug: "shanghai-beijing",
+    excerpt: "和高中的朋友一起去北京看雪",
+    content: "\n## 上海 Shanghai\n第一站到上海主要目的就是找敏丹姐姐玩～（我是不会说我主要是想去迪士尼玩的！）"
+  },
+{
+    title: "Research Updates",
+    date: "2025-05-06",
+    slug: "research-update",
+    excerpt: "A quick update on my latest research progress...",
+    content: "\n## 上海 Shanghai\n"
+  }],
 };
