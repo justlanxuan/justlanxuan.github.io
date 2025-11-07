@@ -15,21 +15,21 @@ export const courses = {
         },
         {
           title: "MATH 1013 - Calculus I",
-          filterTags: ["Math"],
+          filterTags: ["Science"],
           displayTags: ["Calculus"],
           note: null,
         },
         {
           title:
             "COMP 2711H - Honors Discrete Mathematical Tools for Computer Science",
-          filterTags: ["Math", "CS"],
+          filterTags: ["Science", "CS"],
           displayTags: ["Set Theory", "Number Theory", "Combinatorics"],
           note: null,
         },
         {
           title:
             "IEDA 2010 - Introduction of Industrial Engineering and Decision Analytics",
-          filterTags: [],
+          filterTags: ["Broadening"],
           displayTags: ["Project Management"],
           note: null,
         },
@@ -65,13 +65,13 @@ export const courses = {
         },
         {
           title: "MATH 1014 - Calculus II",
-          filterTags: ["Math"],
+          filterTags: ["Science"],
           displayTags: ["Calculus"],
           note: null,
         },
         {
           title: "PHYS 1112 - General Physics I with Calculus",
-          filterTags: [],
+          filterTags: ["Science"],
           displayTags: ["Mechanics"],
           note: null,
         },
@@ -83,7 +83,7 @@ export const courses = {
       items: [
         {
           title: "MATH 2111 - Matrix Algebra and Applications",
-          filterTags: ["Math"],
+          filterTags: ["Science"],
           displayTags: ["Linear Algebra"],
           note: null,
         },
@@ -132,12 +132,12 @@ export const courses = {
         {
           title: "LANG 1330 - Spanish and the Other America",
           filterTags: ["Broadening"],
-          displayTags: [],
+          displayTags: ["Language"],
           note: null,
         },
         {
           title: "PHYS1114 - General Physics II",
-          filterTags: [],
+          filterTags: ["Science"],
           displayTags: ["Electricity"],
           note: "/notes/phys1114.pdf",
         },
@@ -197,7 +197,7 @@ export const courses = {
         },
         {
           title: "ELEC 2600 -  Probability and Random Processes in Engineering",
-          filterTags: ["Math"],
+          filterTags: ["Science"],
           displayTags: [],
           note: null,
         },
@@ -215,7 +215,7 @@ export const courses = {
         },
         {
           title: "MATH 2011 - Introduction to Multivariable Calculus",
-          filterTags: ["Math"],
+          filterTags: ["Science"],
           displayTags: ["Calculus"],
           note: null,
         },

@@ -16,12 +16,12 @@ interface CourseItem {
 }
 
 export default function CoursesPage() {
-  const [selectedTag, setSelectedTag] = useState("ALL");
+  const [selectedTag, setSelectedTag] = useState("All");
 
   // 收集所有 filterTag（去重）
   const tagSet = Array.from(
     new Set([
-      "ALL",
+      "All",
       ...courses.years.flatMap((y) =>
         y.items.flatMap((c) => c.filterTags || [])
       ),
@@ -46,7 +46,7 @@ export default function CoursesPage() {
       {courses.years.map((year, i) => {
         // 按 filterTag 过滤
         const filteredItems =
-          selectedTag === "ALL"
+          selectedTag === "All"
             ? year.items
             : year.items.filter((c: CourseItem) =>
                 (c.filterTags || []).includes(selectedTag)
@@ -64,24 +64,24 @@ export default function CoursesPage() {
                 <div key={j} className="course-item">
                   {/* 标题 + Note */}
                   {course.link ? (
-                    <a href={course.link} className="course-title">
+                    <span className="course-title">
                       {course.title}
-                      {course.note && (
+                      {course.link && (
                         <>
                           {" "}
                           (
                           <a
-                            href={course.note}
+                            href={course.link}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-blue-600"
                           >
-                            Note
+                            Link
                           </a>
                           )
                         </>
                       )}
-                    </a>
+                    </span>
                   ) : (
                     <span className="course-title">
                       {course.title}
