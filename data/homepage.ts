@@ -27,7 +27,7 @@ export const homepageData = {
     },
     { date: "2024-01", 
       text: "Travel with friends at Shanghai and Beijing!" ,
-      link: "/posts/travel-shanghai-beijing",
+      link: "/posts/shanghai-beijing",
     },
       
     { date: "2024-06", 
@@ -43,7 +43,8 @@ export const homepageData = {
       text: "Mathematical modeling competition with friends." ,
     },
     { date: "2025-05", 
-      text: "Attending ICRA!" ,
+      text: "Attending ICRA2025!" ,
+      link: "/posts/icra-2025",
     },
     { date: "2025-06", 
       text: "Summer exchange at Charles University in Prague!" ,
