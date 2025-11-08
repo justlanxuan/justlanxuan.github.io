@@ -280,7 +280,7 @@ main {
 .page-layout {
   max-width: 900px;
   margin: 0 auto;
-  padding: 1rem 8rem;
+  padding: 1rem 10%;
 }
 .page-layout a {
   color: var(--text-color);
