@@ -478,6 +478,8 @@ main {
   border-radius: 6px;
 }
 .post-content figure figcaption {
+    width: 100%;
+  font-size: 0.9rem;
   color: var(--light-gray);
   margin-top: 0.5rem;
 }
@@ -495,13 +497,6 @@ main {
 }
 
 .post-content .img-row img {
-  width: 30%;
+  width: 35%;
   border-radius: 6px;
-}
-
-.post-content .img-row figcaption {
-  width: 100%;
-  font-size: 0.9rem;
-  color: var(--light-gray);
-  margin-top: 0.5rem;
 }
