@@ -380,20 +380,23 @@ main {
 .filter-btn {
   display: inline-block;
   padding: 0.3rem 0.6rem;
-  background: var(--border-color);
+  background: transparent;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border: none;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
 }
 
 .filter-btn:hover {
-  background: var(--bg-color);
+  background: var(--bg-gray);
 }
-
+.filter-btn::before {
+  content: "# "; 
+  font-weight: bold;
+}
 .filter-btn.active {
-  background: var(--dark-color, var(--dark-color));
+  background: var(--accent-color);
   color: var(--bg-color);
 }
 
