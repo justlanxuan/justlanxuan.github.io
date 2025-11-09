@@ -55,6 +55,7 @@ export default function CoursesPage() {
         if (filteredItems.length === 0) return null;
 
         return (
+          
           <section key={i} className="year-block">
             <h2 className="year-heading">
               {year.year} <span className="term">({year.term})</span>

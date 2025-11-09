@@ -1,4 +1,5 @@
 /** @format */
+import Link from "next/link";  
 import { posts } from "@/data/posts";
 import PageLayout from "@/components/PageLayout";
 import { marked } from "marked";
@@ -9,7 +10,8 @@ export default async function PostDetail({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = posts.items.find((p) => p.slug === slug);
+  const index = posts.items.findIndex((p) => p.slug === slug);
+  const post = posts.items[index];
 
   if (!post) {
     return (
@@ -21,6 +23,8 @@ export default async function PostDetail({
     );
   }
 
+  const prevPost = posts.items[index - 1];
+  const nextPost = posts.items[index + 1];
   const html = marked(post.content);
 
   return (
@@ -35,6 +39,21 @@ export default async function PostDetail({
           className="post-content"
           dangerouslySetInnerHTML={{ __html: html }}
         />
+        <nav className="post-nav">
+          {prevPost ? (
+            <Link href={`/posts/${prevPost.slug}`} className="prev-post">
+              ← {prevPost.title}
+            </Link>
+          ) : (
+            <span />
+          )}
+
+          {nextPost && (
+            <Link href={`/posts/${nextPost.slug}`} className="next-post">
+              {nextPost.title} →
+            </Link>
+          )}
+        </nav>
       </article>
     </PageLayout>
   );
