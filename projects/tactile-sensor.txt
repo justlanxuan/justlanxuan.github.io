@@ -1,0 +1,45 @@
+1:"$Sreact.fragment"
+2:I[8358,["619","static/chunks/619-ba102abea3e3d0e4.js","239","static/chunks/239-c2117d3ee033cea8.js","177","static/chunks/app/layout-364510cdeed0ce2c.js"],"default"]
+3:I[9766,[],""]
+4:I[8924,[],""]
+6:I[4431,[],"OutletBoundary"]
+8:I[5278,[],"AsyncMetadataOutlet"]
+a:I[4431,[],"ViewportBoundary"]
+c:I[4431,[],"MetadataBoundary"]
+d:"$Sreact.suspense"
+f:I[7150,[],""]
+:HL["/_next/static/css/25d9f226f051e9e0.css","style"]
+0:{"P":null,"b":"85_VxUXmZaXHPatkhWtqO","p":"","c":["","projects","tactile-sensor"],"i":false,"f":[[["",{"children":["projects",{"children":[["slug","tactile-sensor","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/25d9f226f051e9e0.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":[["$","$L2",null,{}],["$","main",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","footer",null,{"className":"site-footer","children":[["$","div",null,{"children":"© 2025 Lanxuan"}],["$","div",null,{"children":["Last updated on ","Sep 2025"]}]]}]]}]}]]}],{"children":["projects",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["slug","tactile-sensor","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$L7",["$","$L8",null,{"promise":"$@9"}]]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,[["$","$La",null,{"children":"$Lb"}],null],["$","$Lc",null,{"children":["$","div",null,{"hidden":true,"children":["$","$d",null,{"fallback":null,"children":"$Le"}]}]}]]}],false]],"m":"$undefined","G":["$f",[]],"s":false,"S":true}
+10:Tc6a,<p>This project is published on ICRA 2025: <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11127921">A Highly Robust Contact Sensor for Precise Contact Detection of Fabric</a>(co‑first author). This page provides additional notes, ideas, and ongoing thoughts related to the project.</p>
+<h2>Some Intuitive Ideas</h2>
+<p>In the context of fabric detection, a sensor must be <strong>robust</strong> in industrial environments while providing <strong>accurate, real-time feedback</strong>. One of the main challenges in fabric detection is that fabric is very soft and easily deforms. As a result, a rigid sensor must offer extremely high spatial resolution and very low latency to detect contact before substantial deformation occurs. (Latency is a critical issue because fabric can deform very quickly under even a small force.)</p>
+<p>An intuitive idea that follows from this observation is that if the sensor itself is <span style="color:rgb(150, 0, 0);"><strong>&quot;softer&quot;</strong></span> than the fabric, the fabric will be less prone to deformation upon contact. This, in turn, allows more time for the system to detect contact while maintaining a small interaction force.</p>
+<p>Another intuitive idea is that, since the sensor is &quot;softer&quot; than the fabric, it will deform more than the fabric during contact, making this deformation <span style="color:rgb(150, 0, 0);"><strong>observable</strong></span> in the sensor’s output. (In fact, we found that deformation in a soft object is easier to detect and more observable than the applied force itself.)</p>
+<p>The final structure of the sensor follows the above ideas: it&#39;s soft(with a soft membrane structure) and observe detection via deformation(with an internal optic distance sensor to detect deformation of that soft membrane).</p>
+<h2>Fabrication</h2>
+<p>There&#39;s nothing interesting about the optic distance sensor: it is a standard time-of-flight (ToF) module with a relatively wide field of view (FoV) and relatively high spatial resolution, particularly at short range.</p>
+<figure>
+  <img src="/project/sensor6.jpg">
+  <figcaption>Optic sensor without the cover (I took it off to see how it works)</figcaption>
+</figure>
+The design of the soft membrane is more interesting: it must be softer than the fabric, yet it should maintain its shape (i.e., remain undeformed) during motion or under disturbances such as wind. After several experiments, I found that a 0.4 mm‑thick silicone gel membrane, formed into cylindrical and hemispherical shapes, is the softest configuration that can still maintain sufficient stiffness and shape stability.
+<figure class="img-row">
+<div class="img-wrap">
+  <img src="/project/sensor1.png" style="width: 30%;">
+  <img src="/project/sensor5.jpg" style="width: 55%;">
+</div>
+  <figcaption>Different structures that I came up with</figcaption>
+</figure>
+<figure class="img-row">
+<div class="img-wrap">
+  <img src="/project/sensor2.png"style="width: 55%;">
+  <img src="/project/sensor4.png"style="width: 30%;">
+</div>
+  <figcaption>Testing different thicknesses & final 3D mold for casting the soft membrane</figcaption>
+</figure>
+5:["$","div",null,{"className":"page-layout","children":["$undefined",["$","div",null,{"className":"page-content","children":["$","article",null,{"className":"project-wrapper","children":[["$","header",null,{"children":["$","h1",null,{"className":"project-title","children":"A tactile Sensor Design"}]}],["$","div",null,{"className":"filter-buttons","children":[["$","span","0",{"className":"tag","children":"research"}],["$","span","1",{"className":"tag","children":"sensor"}],["$","span","2",{"className":"tag","children":"fabrication"}],["$","span","3",{"className":"tag","children":"signal processing"}]]}],["$","section",null,{"className":"project-content","dangerouslySetInnerHTML":{"__html":"$10"}}]]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+7:null
+11:I[622,[],"IconMark"]
+9:{"metadata":[["$","title","0",{"children":"Lanxuan"}],["$","meta","1",{"name":"description","content":"Lanxuan's personal website"}],["$","link","2",{"rel":"icon","href":"/favicon.ico","type":"image/x-icon","sizes":"16x16"}],["$","$L11","3",{}]],"error":null,"digest":"$undefined"}
+e:"$9:metadata"
