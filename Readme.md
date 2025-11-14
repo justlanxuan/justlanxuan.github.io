@@ -1,5 +1,5 @@
 ## A workflow
-1. build the web, update posts in data/posts/*.md, where * is the date today.
+1. build the web, update posts in posts/*.md, where * is the date today.
 ```bash
 npm run build
 ```

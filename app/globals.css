@@ -1,8 +1,8 @@
 /** @format */
 
 :root {
-  --accent-color: rgb(107, 93, 252);
-  --dark-color: darkblue;
+  --accent-color: rgb(255, 115, 0);
+  --dark-color: rgb(150, 0, 0);
   --text-color: #000;
   --gray-color: #444;
   --light-gray: #888;
@@ -457,12 +457,18 @@ main {
 .course-title[href]:hover {
   color: var(--dark-color);
 }
-
+.post-title {
+  font-family: 'Noto Serif SC', 'Noto Serif', serif;
+}
 .post-date {
   color: var(--light-gray);
   font-size: 0.9rem;
 }
 
+.post-content {
+  font-family: 'Noto Serif SC', 'Noto Serif', serif;
+  line-height: 1.8;
+}
 .post-content figure {
   text-align: center;
   margin: 1.5rem 0;
@@ -502,4 +508,47 @@ main {
   border-top: 1px dashed;
   display: flex;
   justify-content: space-between;
+}
+.post-content img.small {
+  width: 60%;
+}
+.project-title {
+  font-family: 'Noto Serif SC', 'Noto Serif', serif;
+}
+.project-content {
+  font-family: 'Noto Serif SC', 'Noto Serif', serif;
+  line-height: 1.8;
+}
+.project-content figure {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.project-content figure img {
+  width: 90%;
+  max-width: fit-content;
+  border-radius: 6px;
+}
+.project-content figure figcaption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  margin-top: 0.5rem;
+}
+
+.project-content .img-row {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.project-content .img-row .img-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-content .img-row img {
+  width: 44%;
+  max-width: fit-content;
+  border-radius: 6px;
 }

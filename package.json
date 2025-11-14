@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "node scripts/updatePosts.js && next build",
+    "build": "node scripts/updatePosts.js && node scripts/updateProjects.js && next build",
     "start": "next start",
     "lint": "next lint",
-    "post": "node scripts/updatePosts.js"
+    "post": "node scripts/updatePosts.js && node scripts/updateProjects.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",

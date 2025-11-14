@@ -43,7 +43,7 @@ export default function ProjectsPage() {
       {/* ===== Projects Grid ===== */}
       <div className="projects-grid">
         {filteredProjects.map((p, i) => (
-          <Link key={i} href={p.link || "#"} className="project-card">
+          <Link key={i} href={`/projects/${p.slug}`} className="project-card">
             <div
               className="card-image"
               style={{ backgroundImage: `url(${p.image})` }}

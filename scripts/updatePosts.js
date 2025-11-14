@@ -2,7 +2,7 @@
 import fs from "fs";
 import matter from "gray-matter";
 
-const dir = "./data/posts"; // Markdown 目录
+const dir = "./posts"; // Markdown 目录
 const outputFile = "./data/posts.ts"; // 输出文件路径
 
 const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
@@ -30,4 +30,4 @@ export const posts = {
 if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
 
 fs.writeFileSync(outputFile, out);
-console.log("✅ Generated data/posts.ts successfully!");
+console.log("✅ Post Generated successfully!");

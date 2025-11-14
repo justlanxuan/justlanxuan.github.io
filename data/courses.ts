@@ -91,7 +91,7 @@ export const courses = {
           title: "UROP 1000 - Undergraduate Research Opportunities",
           filterTags: ["Research"],
           displayTags: ["Tactile Sensor Development"],
-          link: "/projects/tactile-sensor",
+          link: "/project/tactile-sensor",
           note: null,
         },
       ],
