@@ -17,6 +17,7 @@ const items = files.map((file) => {
     title: "${data.title}",
     slug: "${data.slug}",
     tags: ${tagsArray},
+    date: "${data.date}",
     image: "${data.image}",
     content: ${contentString}
   }`;

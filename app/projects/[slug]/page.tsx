@@ -29,15 +29,9 @@ export default async function PostDetail({
         <header>
           <h1 className="project-title">{project.title}</h1>
         </header>
-        {project.tags && project.tags.length > 0 && (
-          <div className="filter-buttons">
-            {project.tags.map((tag, index) => (
-              <span key={index} className="tag">
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+        <small className="post-date" style={{ display: "block", marginBottom: "0.25rem" }}>
+              Last Update: {project.date}
+            </small>
 
         <section
           className="project-content"

@@ -2,9 +2,10 @@
 title: "A tactile Sensor Design"
 slug: "tactile-sensor"
 tags: ["research","sensor", "fabrication","signal processing"]
+date: "2025-05-29"
 image: "/img/tactile-sensor-cover.jpg"
 ---
-This project is published on ICRA 2025: [A Highly Robust Contact Sensor for Precise Contact Detection of Fabric](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11127921)(co‑first author). This page provides additional notes, ideas, and ongoing thoughts related to the project.
+This project is published on ICRA 2025: [A Highly Robust Contact Sensor for Precise Contact Detection of Fabric](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11127921) (co‑first author). This page provides additional notes, ideas, and ongoing thoughts related to the project.
 ## Some Intuitive Ideas
 In the context of fabric detection, a sensor must be **robust** in industrial environments while providing **accurate, real-time feedback**. One of the main challenges in fabric detection is that fabric is very soft and easily deforms. As a result, a rigid sensor must offer extremely high spatial resolution and very low latency to detect contact before substantial deformation occurs. (Latency is a critical issue because fabric can deform very quickly under even a small force.)
 
@@ -36,3 +37,33 @@ The design of the soft membrane is more interesting: it must be softer than the 
 </div>
   <figcaption>Testing different thicknesses & final 3D mold for casting the soft membrane</figcaption>
 </figure>
+
+A **tip** for fabricating a soft membrane is to design a proper fixing structure for the 3D mold that holds the mold securely in place. This helps ensure that the membrane maintains a uniform thickness in all directions. Consistent thickness is crucial for subsequent property analysis and algorithm design, as variations in thickness can significantly influence its performance.
+<figure>
+  <img src="/project/sensor7.png">
+  <figcaption>The whole system</figcaption>
+</figure>
+
+## Algorithhm Design
+The raw distance data from the sensor is processed by a designed Kalman Filter (which is not really interesting). The logic is also straightforward: when the distance (between the membrane and the sensor) decreases, it indicates that contact is occurring. The interesting challenge lies in finding the right trade‑off between <span style="color:rgb(150, 0, 0);">**accuracy**</span> and <span style="color:rgb(150, 0, 0);">**sensitivity**</span>.
+
+A naive solution:
+- Accuracy comes first: collect more evidence before confirming a “touch” to ensure that only genuine contact is detected.
+- Sensitivity comes first: Identify contact with fewer “touch” signals, allowing faster detection but at the risk of false positives.
+
+### Sensitivity
+But how sensitive should it be? A common way is to detect the force resolution. Another important standard in this context is that the membrane should detect contact <span style="color:rgb(150, 0, 0);">**before the fabric gets compressed**</span>. Ideally, it should sense the touch while still preserving the fabric’s natural “fluffy” texture, without flattening it.
+
+### Accuracy
+By studying how the membrane physically interacts with the fabric, I found some interesting clues that support the classifier, which was developed using a mix of data‑driven methods and physical modeling.
+
+An interesting observation: when membrane is disturbed by something light, the top surface only forms a slight indentation. But when a stronger force is applied, such as contact from clothing, especially when pressed, the bottom part of the membrane also deforms. This creates a non‑linear link between force and deformation.
+<figure>
+  <img src="/project/sensor8.png">
+  <figcaption>How the membrane deforms with different force applied</figcaption>
+</figure>
+
+## Further Improvements
+
+- A more solid structure from inside?
+- Without touching?
