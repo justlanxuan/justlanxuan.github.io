@@ -350,25 +350,33 @@ main {
 }
 
 .card-content {
-  height: 100px;
   background: var(--bg-color);
-  text-align: center;
-  padding: 0;
-  margin-bottom: 1.5rem; 
+
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .card-content h3 {
   font-size: 1rem;            
-  padding-top: 0.5rem;
   margin: 0;
-}
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.3rem;
+  text-align: center;
+  font-weight: 600;
 }
 
+.project-description {
+  font-size: 0.875rem;
+  color: var(--gray-color);
+  margin: 0;
+  
+  /* 限制为2行，超出显示省略号 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 /* ============ Courses ============ */
 .filter-buttons {
   display: flex;

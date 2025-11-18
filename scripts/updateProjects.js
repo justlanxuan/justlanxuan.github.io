@@ -13,13 +13,30 @@ const items = files.map((file) => {
   const tagsArray = Array.isArray(data.tags) 
     ? JSON.stringify(data.tags) 
     : `["${data.tags}"]`;
+  
+  // 处理 links 字段
+  const linksArray = data.links && Array.isArray(data.links) 
+    ? JSON.stringify(data.links)
+    : null;
+  
+  // 构建对象字符串
+  const fields = [
+    `title: "${data.title}"`,
+    `slug: "${data.slug}"`,
+    `tags: ${tagsArray}`,
+    `date: "${data.date}"`,
+    `image: "${data.image}"`,
+    `description: "${data.description}"`,
+    `content: ${contentString}`
+  ];
+  
+  // 只有当 links 存在时才添加
+  if (linksArray) {
+    fields.push(`links: ${linksArray}`);
+  }
+  
   return `{
-    title: "${data.title}",
-    slug: "${data.slug}",
-    tags: ${tagsArray},
-    date: "${data.date}",
-    image: "${data.image}",
-    content: ${contentString}
+    ${fields.join(',\n    ')}
   }`;
 });
 

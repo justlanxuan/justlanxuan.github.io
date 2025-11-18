@@ -51,16 +51,8 @@ export default function ProjectsPage() {
 
             <div className="card-content">
               <h3>{p.title}</h3>
-
-              {p.tags && p.tags.length > 0 && (
-                <div className="project-tags">
-                  {p.tags.map((t, k) => (
-                    <span key={k} className="tag">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              )}
+              <p className="project-description">{p.description}</p>
+              
             </div>
           </Link>
         ))}

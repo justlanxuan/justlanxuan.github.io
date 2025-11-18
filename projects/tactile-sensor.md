@@ -1,11 +1,21 @@
 ---
 title: "A tactile Sensor Design"
 slug: "tactile-sensor"
-tags: ["research","sensor", "fabrication","signal processing"]
+tags: ["sensor", "fabrication","algorithm"]
 date: "2025-05-29"
 image: "/img/tactile-sensor-cover.jpg"
+description: "A highly robust contact sensor for precise contact detection of fabric"
+
 ---
 This project is published on ICRA 2025: [A Highly Robust Contact Sensor for Precise Contact Detection of Fabric](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=11127921) (co‑first author). This page provides additional notes, ideas, and ongoing thoughts related to the project.
+
+## Overview
+Automation in the apparel and textile industry has long been a pursuit. However, accurately locating the surface of a fabric remains a challenge, limiting the automation in sorting, packaging, and other processes. When humans locate clothing, they rely on contact feedback for the exact position of the clothing surface. As existing contact detection solutions are significantly affected by environmental factors, it is essential to develop a sensor with robust contact detection capabilities. In this work, we introduce a contact sensor with high robustness and high force resolution. This contact sensor detects contact by measuring the deformation of an elastomer using a distancemeasuring module. Based on the deformation characteristics of the elastomer, we designed a detection algorithm that not only reduces the noise of data but also extracts features such as trends and elastomer states, enabling reliable contact detection. Through experiments, we validated that this contact sensor can detect contact forces as low as 0.017 N and is robust to external interference or sensor movement. We also verified that the sensor can process data within 7.5 ms and return contact detection with 95% accuracy. Additionally, we assessed its effectiveness in real fabric contact scenarios.
+<figure>
+  <img src="/project/sensor7.png">
+  <figcaption>The whole system</figcaption>
+</figure>
+
 ## Some Intuitive Ideas
 In the context of fabric detection, a sensor must be **robust** in industrial environments while providing **accurate, real-time feedback**. One of the main challenges in fabric detection is that fabric is very soft and easily deforms. As a result, a rigid sensor must offer extremely high spatial resolution and very low latency to detect contact before substantial deformation occurs. (Latency is a critical issue because fabric can deform very quickly under even a small force.)
 
@@ -39,10 +49,6 @@ The design of the soft membrane is more interesting: it must be softer than the 
 </figure>
 
 A **tip** for fabricating a soft membrane is to design a proper fixing structure for the 3D mold that holds the mold securely in place. This helps ensure that the membrane maintains a uniform thickness in all directions. Consistent thickness is crucial for subsequent property analysis and algorithm design, as variations in thickness can significantly influence its performance.
-<figure>
-  <img src="/project/sensor7.png">
-  <figcaption>The whole system</figcaption>
-</figure>
 
 ## Algorithhm Design
 The raw distance data from the sensor is processed by a designed Kalman Filter (which is not really interesting). The logic is also straightforward: when the distance (between the membrane and the sensor) decreases, it indicates that contact is occurring. The interesting challenge lies in finding the right trade‑off between <span style="color:rgb(150, 0, 0);">**accuracy**</span> and <span style="color:rgb(150, 0, 0);">**sensitivity**</span>.
@@ -63,7 +69,7 @@ An interesting observation: when membrane is disturbed by something light, the t
   <figcaption>How the membrane deforms with different force applied</figcaption>
 </figure>
 
-## Further Improvements
+## Takeaways
 
 - A more solid structure from inside?
 - Without touching?
