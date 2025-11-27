@@ -1,6 +1,8 @@
 // data/homepage.ts
 /** @format */
 
+import { imageConfigDefault } from "next/dist/shared/lib/image-config";
+
 export const homepageData = {
   name: "Lanxuan",
   tagline: "CS & ELEC student @ HKUST",
@@ -20,35 +22,38 @@ export const homepageData = {
       external: true,
     },
   ],
-  news: [
+   news: [
     {
-      date: "2023-09",
-      text: "Start my studies at HKUST!",
+      title: "Tactile Sensor Design",
+      summary: "Design a tactile sensor for contact detection of fabrics",
+      date: "2024-10-29",
+      image: "/img/tactile-sensor-cover.jpg",
+      href: "/projects/tactile-sensor",
     },
-    { date: "2024-01", 
-      text: "Travel with friends at Shanghai and Beijing!" ,
-      link: "/posts/shanghai-beijing",
+    {
+      title: "Exchange to UW!",
+      summary: "Looking forward to my exchange semester in winter 2026 at University of Washington!",
+      date: "2026-01-05",
+      image: "/img/uw.png",
     },
-      
-    { date: "2024-06", 
-      text: "Research work on tactile sensor development." ,
+    {
+      title: "New Start at HKUST!",
+      summary: "Begin my university journey in Hong Kong.",
+      date: "2023-09-01",
+      image: "/img/hkust.png",
     },
-    { date: "2024-08", 
-      text: "Travel with friends at Malaysia!" ,
+    {
+      title: "Attend ICRA 2025!",
+      summary: "Present my work and explore the latest in robotics.",
+      date: "2025-05-23",
+      href: "posts/icra-2025",
+      image: "/post/icra1.jpg"
     },
-    { date: "2025-01", 
-      text: "Travel with friends at Japan!" ,
+    {
+      title: "Summer Exchange at Prague!",
+      summary: "Studying sociology and Czech language, exploring European culture.",
+      date: "2025-06-03",
+      image: "/img/prague.jpg",
     },
-    { date: "2025-01", 
-      text: "Mathematical modeling competition with friends." ,
-    },
-    { date: "2025-05", 
-      text: "Attending ICRA2025!" ,
-      link: "/posts/icra-2025",
-    },
-    { date: "2025-06", 
-      text: "Summer exchange at Charles University in Prague!" ,
-    },
-
   ],
 };

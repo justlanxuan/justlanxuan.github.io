@@ -11,6 +11,9 @@
   --bg-cyan: rgb(200, 220, 220);
   --border-color: #e5e7eb;
   --max-width: 1200px;
+  --news-bg: #ffffff;
+  --news-card-shadow: 0 10px 30px rgba(75, 16, 16, 0.08);
+
 }
 
 html,
@@ -239,42 +242,176 @@ main {
   border-top: 1px solid var(--border-color);
 }
 
+.news-divider {
+  width: 200px;                        /* 控制长度 */
+  max-width: 80%;
+  height: 4px;                         /* 稍微厚一点 */
+  margin: auto; 
+  border: none;
+  background: linear-gradient(90deg, var(--accent-color), var(--dark-color)); /* 更亮的颜色 */
+  box-shadow: 0 4px 12px rgba(229, 131, 70, 0.35);       /* 让它更显眼 */
+}
 .news-section {
-  display: flex;
-  justify-content: center;
-  margin: 1rem;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  max-width: 80%;
 }
 
-.news-card {
-  background: var(--bg-gray);
-  border-left: 4px solid var(--dark-color);
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-  max-width: 600px;
-  margin: 1rem;
+.news-header {
+  text-align: center;
+  margin: 0 auto;
+  flex-direction: column;
 }
 
-.news-title {
+.news-eyebrow {
   text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-color);
+  font-weight: 600;
   font-size: 1rem;
-  font-weight: bold;
-  color: var(--dark-color);
-  margin: 0.25rem;
 }
 
-.news-list {
-  list-style: none;
+/* 卡片网格 */
+.news-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* 单个卡片 */
+.news-card {
+  background: var(--news-bg);
+  border-radius: 1rem;
+  box-shadow: var(--news-card-shadow);
+  display: flex;
+  width: 350px;
+  height: 200px;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.news-card-title {
   margin: 0;
   padding: 0;
+  font-size: 1rem;
 }
 
-.news-list li {
-  margin: 0.4rem 0;
-  font-size: 0.95rem;
+.news-card-summary {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--news-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.news-date {
-  font-weight: bold;
+
+.news-card-meta {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+.news-card-link-wrapper {
+  text-decoration: none;
+}
+
+/* 通用容器（保留原尺寸） */
+.flip-card {
+  perspective: none;          /* 不再需要 3D */
+  padding: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: var(--news-card-shadow);
+  transition: transform 300ms ease;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus-within .flip-card-inner {
+  transform: translateY(-6px);
+}
+
+/* 前/后两层共存，做渐隐渐显 */
+.flip-card-face {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  background: var(--news-bg);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: #2a160f;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 260ms ease, transform 320ms ease;
+}
+
+.flip-card-back {
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-gray);
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 320ms ease, transform 360ms ease;
+}
+
+.flip-card-back::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.55));
+}
+
+.flip-card-back-overlay {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* hover 时的渐隐渐显效果 */
+.flip-card:hover .flip-card-front,
+.flip-card:focus-within .flip-card-front {
+  opacity: 0;
+  transform: translateY(-12px);
+}
+
+.flip-card:hover .flip-card-back,
+.flip-card:focus-within .flip-card-back {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 小屏适配 */
+@media (max-width: 360px) {
+  .flip-card {
+    width: 100%;
+  }
 }
 
 .page-layout {

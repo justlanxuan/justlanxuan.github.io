@@ -7,6 +7,7 @@ export default function HomePage() {
   return (
     <>
       <HomeIntro />
+       <div className="news-divider" />
       <News items={homepageData.news} />
     </>
   );
