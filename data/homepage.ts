@@ -31,7 +31,7 @@ export const homepageData = {
       href: "/projects/tactile-sensor",
     },
     {
-      title: "Exchange to UW!",
+      title: "Exchange at Seattle!",
       summary: "Looking forward to my exchange semester in winter 2026 at University of Washington!",
       date: "2026-01-05",
       image: "/img/uw.png",
@@ -51,9 +51,10 @@ export const homepageData = {
     },
     {
       title: "Summer Exchange at Prague!",
-      summary: "Studying sociology and Czech language, exploring European culture.",
+      summary: "Spent a great summer in Prague exploring European culture.",
       date: "2025-06-03",
       image: "/img/prague.jpg",
     },
+    
   ],
 };
