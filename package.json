@@ -1,30 +1,32 @@
 {
-  "name": "my-web",
-  "version": "0.1.0",
-  "private": true,
+  "name": "web",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "node scripts/updatePosts.js && node scripts/updateProjects.js && next build",
-    "start": "next start",
-    "lint": "next lint",
-    "post": "node scripts/updatePosts.js && node scripts/updateProjects.js"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "gray-matter": "^4.0.3",
-    "marked": "^17.0.0",
-    "next": "15.5.3",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/react": "^4.4.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "@types/react": "^19.2.13",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^5.17.1",
+    "astro-auto-import": "^0.5.1",
+    "astro-seo": "^1.1.0",
+    "lucide-react": "^0.563.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "rehype-figure": "^1.0.1",
+    "rehype-raw": "^7.0.0",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.3",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "@tailwindcss/typography": "^0.5.19",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

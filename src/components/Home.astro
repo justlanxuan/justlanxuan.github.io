@@ -1,0 +1,353 @@
+---
+// src/components/Home.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EmailCopy from './EmailCopy.astro';
+import '../styles/global.css';
+interface Props {
+  lang: 'zh-CN' | 'en';
+}
+const { lang } = Astro.props;
+
+const urls = {
+  home: lang === 'en' ? '/' : '/zh-CN/',
+  blog: lang === 'en' ? '/blog/' : '/blog/zh-CN/',
+};
+
+const avatarSrc = '/avatar.jpg';
+interface CourseExtra {
+  label: string;
+  link: string;
+}
+
+interface Course {
+  code: string;
+  title: string;
+  note?: string;
+  extras?: CourseExtra[];
+}
+
+interface SemesterData {
+  semester: string;
+  courses: Course[];
+}
+const uwCourses: SemesterData[] = [
+  {
+    semester: 'Winter 2026',
+    courses: [
+      { code: 'CSE 403', title: 'Software Engineering' }, // 没有 note 和 extras，不会报错
+      { code: 'CSE 443', title: 'Digital Accessibility' },
+      { code: 'DXARTS 471', title: 'Mechatronic Art, Design And Fabrication' },
+    ],
+  },
+];
+
+const hkustCourses: SemesterData[] = [
+  {
+    semester: 'Fall 2025',
+    courses: [
+      { code: 'COMP 3031', title: 'Principles of Programming Language' },
+      { code: 'ELEC 3120', title: 'Computer Communication Networks' },
+      { code: 'ELEC 3200', title: 'System Modeling, Analysis and Control' },
+      { code: 'MATH 2011', title: 'Introduction to Multivariable Calculus' },
+      { code: 'PHYS 1002', title: 'Introduction to Astrophysics and Astronomy' },
+    ],
+  },
+  {
+    semester: 'Spring 2025',
+    courses: [
+      {
+        code: 'COMP 2012',
+        title: 'Object-oriented Programming and Data Structures',
+        note: 'course/comp2012.pdf',
+      },
+      { code: 'COMP 2611', title: 'Computer Organization', note: 'course/comp2611.pdf' },
+      {
+        code: 'COMP 3211',
+        title: 'Fundamentals of Artificial Intelligence',
+        note: 'course/comp3211.pdf',
+      },
+      { code: 'COMP 4971', title: 'Independent Work' },
+      { code: 'ELEC 2400', title: 'Electronic Circuits' },
+      {
+        code: 'ELEC 5680',
+        title: 'Advanced Deep Learning Architectures',
+        note: 'course/comp5214.pdf',
+      },
+    ],
+  },
+  {
+    semester: 'Fall 2024',
+    courses: [
+      {
+        code: 'COMP 3711H',
+        title: 'Honors Design and Analysis of Algorithms',
+        note: 'course/comp3711h.pdf',
+      },
+      {
+        code: 'COMP 4462',
+        title: 'Data Visualization',
+        extras: [
+          { label: 'Note', link: 'course/comp4462.pdf' },
+          { label: 'Cheat Sheet', link: 'course/comp4462-cheatsheet.pdf' },
+        ],
+      },
+      { code: 'ELEC 2100', title: 'Signals and Systems', note: 'course/elec2100.pdf' },
+      {
+        code: 'ELEC 3310',
+        title: 'Digital Fundamentals and System Design',
+        note: 'course/elec3310.pdf',
+      },
+      { code: 'LANG 1330', title: 'Spanish I' },
+      { code: 'PHYS 1114', title: 'General Physics II', note: 'course/phys1114.pdf' },
+    ],
+  },
+  {
+    semester: 'Spring 2024',
+    courses: [
+      { code: 'COMP 2011', title: 'Programming with C++' },
+      { code: 'COMP 2211', title: 'Exploring Artificial Intelligence' },
+      {
+        code: 'ELEC 1100',
+        title: 'Introduction to Electro-Robot Design',
+        note: 'course/elec1100.pdf',
+      },
+      { code: 'MATH 1014', title: 'Calculus II' },
+      { code: 'PHYS 1112', title: 'General Physics I' },
+    ],
+  },
+  {
+    semester: 'Fall 2023',
+    courses: [
+      { code: 'COMP 1021', title: 'Introduction to Computer Science' },
+      { code: 'COMP 2711H', title: 'Honors Discrete Mathematical Tools for Computer Science' },
+      { code: 'IEDA 2010', title: 'Introduction to Industrial Engineering and Decision Analytics' },
+      { code: 'LANG 1014', title: 'Advanced Academic English for University Studies' },
+      { code: 'MATH 1013', title: 'Calculus I' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={lang === 'en' ? 'Home' : '首页'}
+  description={lang === 'en' ? 'Personal homepage of Lanxuan Hong.' : '洪澜轩的个人主页'}
+  lang={lang}
+>
+  <nav aria-label="Navigation">
+    <a href={urls.home} class={`${Astro.url.pathname === urls.home ? 'active' : ''}`}>
+      {lang === 'zh-CN' ? '首页' : 'Home'}
+    </a>
+    <a href={urls.blog}>
+      {lang === 'zh-CN' ? '日志' : 'Blog'}
+    </a>
+    <div class="lang-switch">
+      <a
+        href={lang === 'zh-CN' ? '/' : '#'}
+        class={`lang-opt ${lang === 'en' ? 'active' : ''}`}
+        aria-label="Switch to English"
+        aria-current={lang === 'en' ? 'page' : undefined}
+      >
+        EN
+      </a>
+      <a
+        href={lang === 'en' ? '/zh-CN/' : '#'}
+        class={`lang-opt ${lang === 'zh-CN' ? 'active' : ''}`}
+        aria-label="切换到中文"
+        aria-current={lang === 'zh-CN' ? 'page' : undefined}
+      >
+        中
+      </a>
+      <div class={`lang-glider ${lang === 'zh-CN' ? 'right' : ''}`}></div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    {
+      lang === 'en' ? (
+        <>
+          <section class="profile">
+            <div class="profile-text">
+              <h1>Lanxuan Hong</h1>
+              <p class="text-center">
+                <a href="/data/cv-lanxuan.pdf" target="_blank">
+                  CV
+                </a>
+                <span class="text-slate-300 mx-2">/</span>
+
+                <a href="https://github.com/justlanxuan" target="_blank">
+                  GitHub
+                </a>
+                <span class="text-slate-300 mx-2">/</span>
+                <EmailCopy lang="en" />
+              </p>
+              <p>
+                My name is <span lang="zh-Hans">洪澜轩</span>, and I go by <strong>Lanxuan</strong>.
+                I study Computer Science &amp; Electronic Engineering at the Hong Kong University of
+                Science &amp; Technology (HKUST).
+              </p>
+              <p>
+                I'm passionate about building technologies to connect the digital and physical
+                worlds, especially through prototyping and building machines that interact with
+                people and their environment.
+              </p>
+              <p>
+                I enjoy playing
+                <a href="https://www.klei.com/games/oxygen-not-included" target="_blank">
+                  Oxygen Not Included
+                </a>
+                and watching soccer games! I also love traveling and photographing. Visit my{' '}
+                <a href={urls.blog}>Blogs</a> for my thoughts and snapshots.
+              </p>
+              <p>I was born and raised in Xiamen.</p>
+            </div>
+            <div class="profile-photo">
+              <img src={avatarSrc} alt="Hong Lanxuan's profile photo" />
+            </div>
+          </section>
+
+          <hr class="divider" />
+
+          <section class="academic" data-lang={lang}>
+            <h1>Academic Context</h1>
+            <h2>Hong Kong University of Science and Technology</h2>
+            <p>
+              B.Sc in Computer Science & Electronic Engineering <span>Sep. 2023 - Now</span>
+            </p>
+            <small>Hong Kong, China</small>
+            <details>
+              <summary aria-label="Show course details" />
+              {hkustCourses.map((sem) => (
+                <>
+                  <b>{sem.semester}</b>
+                  <ul>
+                    {sem.courses.map((c) => (
+                      <li>
+                        <span>{c.code}</span>
+                        {c.title}
+                        {c.note && (
+                          <a href={c.note} target="_blank">
+                            [ Note ]
+                          </a>
+                        )}
+                        {c.extras &&
+                          c.extras.map((e) => (
+                            <a href={e.link} target="_blank">
+                              [ {e.label} ]
+                            </a>
+                          ))}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ))}
+            </details>
+
+            <h2>University of Washington</h2>
+            <p>
+              Exchange
+              <span>Jan. 2026 - Now</span>
+            </p>
+            <small>Seattle, USA</small>
+            <details>
+              <summary aria-label="Show course details" />
+              {uwCourses.map((sem) => (
+                <>
+                  <b>{sem.semester}</b>
+                  <ul>
+                    {sem.courses.map((c) => (
+                      <li>
+                        <span>{c.code}</span>
+                        {c.title}
+                        {c.note && (
+                          <a href={c.note} target="_blank">
+                            [ Note ]
+                          </a>
+                        )}
+                        {c.extras &&
+                          c.extras.map((e) => (
+                            <a href={e.link} target="_blank">
+                              [ {e.label} ]
+                            </a>
+                          ))}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              ))}
+            </details>
+          </section>
+        </>
+      ) : (
+        /* ================= Chinese Content ================= */
+        <>
+          <section class="profile">
+            <div class="profile-text">
+              <h1>洪澜轩</h1>
+              <p class="text-center">
+                <a href="/data/cv-lanxuan.pdf" target="_blank">
+                  简历
+                </a>
+                <span class="text-slate-300 mx-2">/</span>
+
+                <a href="https://github.com/justlanxuan" target="_blank">
+                  GitHub
+                </a>
+                <span class="text-slate-300 mx-2">/</span>
+                <EmailCopy lang="zh-CN" />
+              </p>
+              <>
+                <p>我是洪澜轩，目前就读于香港科技大学（HKUST）， 学习计算机科学和电子工程。</p>
+                <p>
+                  相比于纯粹的软件开发，我更喜欢尝试打通虚拟与现实的界限。我喜欢动手做原型，去探索机器如何感知环境，又如何与人产生更自然的交互。
+                </p>
+              </>
+              <p>
+                闲暇时，我喜欢在
+                <a href="https://www.klei.com/games/oxygen-not-included" target="_blank">
+                  缺氧
+                </a>
+                中搭建复杂的沙盒世界。我也喜欢看球，旅行，拍照。我在
+                <a href={urls.blog} class="inline-link">
+                  日志
+                </a>
+                中记录了一些随想。欢迎访问 ！
+              </p>
+              <p>
+                我来自厦门。这是一座被海风温柔环抱的城市。傍晚时分，我最爱去海边散步，吹吹海风，看看日落晚霞，感受这座城市的宁静与浪漫。
+              </p>
+            </div>
+            <div class="profile-photo">
+              <img src={avatarSrc} alt="洪澜轩的头像" />
+            </div>
+          </section>
+
+          <hr class="divider" />
+
+          <section class="academic" data-lang={lang}>
+            <h1>学术背景</h1>
+            <h2>香港科技大学</h2>
+            <p>
+              计算机科学 & 电子工程 <span>2023年9月 - 现在</span>
+            </p>
+            <small>中国, 香港</small>
+            <details>
+              <summary aria-label="展示课程内容" />
+              即将推出
+            </details>
+
+            <h2>华盛顿大学</h2>
+            <p>
+              交换
+              <span>2026年1月 - 现在</span>
+            </p>
+            <small>美国，西雅图</small>
+            <details>
+              <summary />
+              即将推出
+            </details>
+          </section>
+        </>
+      )
+    }
+  </main>
+</BaseLayout>

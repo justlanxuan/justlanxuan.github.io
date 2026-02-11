@@ -1,0 +1,177 @@
+---
+// src/layouts/BlogPostLayout.astro
+import BaseLayout from './BaseLayout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  blog: CollectionEntry<'blog'>;
+}
+
+const { blog } = Astro.props;
+const { title, description, date, cover, tags, lang } = blog.data;
+const formatteddata = date.toLocaleDateString(lang, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const i18n = {
+  'zh-CN': {
+    updatedPrefix: '更新于',
+    tag: '标签',
+  },
+  en: {
+    updatedPrefix: 'Updated on',
+    tag: 'tag',
+  },
+};
+
+const myLang = i18n[lang];
+
+const urls = {
+  home: lang === 'en' ? '/' : '/zh-CN/',
+  blog: lang === 'en' ? '/blog/' : '/blog/zh-CN/',
+};
+---
+
+<BaseLayout title={title} description={description} lang={lang}>
+  <nav aria-label="Navigation">
+    <a href={urls.home} class={Astro.url.pathname === urls.home ? 'active' : ''}>
+      {lang === 'zh-CN' ? '首页' : 'Home'}
+    </a>
+    <a href={urls.blog} class={Astro.url.pathname === urls.blog ? 'active' : ''}>
+      {lang === 'zh-CN' ? '日志' : 'Blog'}
+    </a>
+  </nav>
+
+  <main id="main-content" aria-labelledby="article-title">
+    <article class:list={['prose', 'prose-slate max-w-none']}>
+      <header>
+        <h1 id="article-title" class="p-name">
+          {title}
+        </h1>
+        <div class="meta">
+          {
+            date && (
+              <div class="date-wrapper">
+                <span>{myLang.updatedPrefix}</span>
+                <time datetime={date.toISOString()} class="dt-updated">
+                  {formatteddata}
+                </time>
+              </div>
+            )
+          }
+        </div>
+      </header>
+
+      <section class="e-content">
+        <slot />
+      </section>
+    </article>
+  </main>
+</BaseLayout>
+
+<style>
+  article header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  article header .meta {
+    margin: 1rem;
+    font-size: 1rem;
+    color: var(--c-text-light);
+  }
+
+  article header .date-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  article header h1 {
+    font-size: 2rem;
+  }
+  .e-content {
+    font-size: 20px;
+  }
+
+  .e-content :global(h1),
+  .e-content :global(h2),
+  .e-content :global(h3) {
+    font-weight: bold;
+    margin: 1rem 0;
+  }
+
+  .e-content :global(a) {
+    color: var(--c-teal);
+    text-decoration: underline;
+    text-decoration-color: var(--c-light-gray);
+    text-underline-offset: 3px;
+  }
+
+  .e-content :global(a:hover) {
+    text-decoration-color: var(--c-teal);
+  }
+
+  .e-content :global(p + p) {
+    margin-top: 1.5rem;
+  }
+
+  .e-content :global(ul),
+  .e-content :global(ol) {
+    margin-bottom: 1.5em;
+    padding-left: 1.5em;
+  }
+
+  .e-content :global(li) {
+    margin-bottom: 0.5em;
+  }
+
+  /* 引用块 */
+  .e-content :global(blockquote) {
+    border-left: 4px solid var(--c-light-gray);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: var(--c-text-light);
+    background-color: var(--c-bg-alt);
+    padding: 1rem;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  /* 图片 */
+  .e-content :global(img) {
+    max-width: 85%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    display: block;
+  }
+  .e-content :global(figcaption) {
+    color: var(--c-text-light);
+    text-align: center;
+    margin: 1rem auto;
+  }
+
+  /* 代码块 */
+  .e-content :global(pre) {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.5em;
+    background-color: var(--c-bg-alt); /* 如果没有专门的代码背景色，用 alt */
+  }
+
+  .e-content :global(code) {
+    font-family: monospace;
+  }
+
+  /* 行内代码 */
+  .e-content :global(p code),
+  .e-content :global(li code) {
+    background-color: var(--c-bg-alt);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25em;
+    font-size: 0.9em;
+  }
+</style>

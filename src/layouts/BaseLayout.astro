@@ -1,0 +1,52 @@
+---
+// src/layouts/BaseLayout.astro
+import { SEO } from 'astro-seo';
+import '../styles/global.css';
+
+type SupportedLang = 'zh-CN' | 'en';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: SupportedLang;
+  className?: string;
+}
+
+const { title, description, lang = 'en', className = '' } = Astro.props;
+
+const siteName = lang === 'zh-CN' ? '澜轩' : 'Lanxuan';
+const myTitle = title === siteName ? siteName : `${title} | ${siteName}`;
+const canonicalURL = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.href;
+---
+
+<!doctype html>
+<html lang={lang} class="motion-safe:scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <SEO
+      title={myTitle}
+      description={description}
+      canonical={canonicalURL}
+      openGraph={{
+        basic: {
+          title: myTitle,
+          type: 'website',
+          image: 'https://justlanxuan.github.io/avatar.jpg',
+        },
+      }}
+      extend={{ link: [{ rel: 'icon', href: '/my-favicon.png' }] }}
+    />
+    <slot name="head" />
+  </head>
+  <body class={className}>
+    <a href="#main-content" class="skip-link">
+      {lang === 'zh-CN' ? '跳转到主要内容' : 'Skip to main content'}
+    </a>
+    <div class="page-container">
+      <slot />
+    </div>
+  </body>
+</html>

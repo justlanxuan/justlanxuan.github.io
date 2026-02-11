@@ -1,0 +1,71 @@
+---
+// src/components/EmailCopy.astro
+interface Props {
+  lang: 'zh-CN' | 'en';
+}
+const { lang } = Astro.props;
+const email = 'lhongae@connect.ust.hk';
+const isCN = lang === 'zh-CN';
+
+const initialLabel = isCN ? '邮箱' : 'Email';
+const copiedLabel = isCN ? '已复制' : 'Copied';
+---
+
+<button
+  id="email-copy-btn"
+  data-email={email}
+  data-initial={initialLabel}
+  data-copied={copiedLabel}
+  type="button"
+  class="group relative inline-flex items-center bg-transparent border-none p-0 cursor-pointer text-[var(--c-teal)] font-inherit align-baseline"
+  title={isCN ? '点击复制邮箱' : 'Click to copy'}
+>
+  <span
+    id="email-text"
+    class="underline decoration-[var(--c-light-gray)] underline-offset-[3px] group-hover:decoration-[var(--c-teal)] transition-colors"
+  >
+    {initialLabel}
+  </span>
+
+  <span
+    class="absolute left-full top-1/2 -translate-y-1/2 ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200 pointer-events-none text-slate-400 group-hover:text-[var(--c-teal)]"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
+    </svg>
+  </span>
+</button>
+
+<script>
+  const btn = document.getElementById('email-copy-btn');
+  const textSpan = document.getElementById('email-text');
+
+  if (btn && textSpan) {
+    btn.addEventListener('click', () => {
+      const email = btn.getAttribute('data-email');
+      const initialText = btn.getAttribute('data-initial');
+      const copiedText = btn.getAttribute('data-copied');
+
+      if (email) {
+        navigator.clipboard.writeText(email).then(() => {
+          if (copiedText) textSpan.textContent = copiedText;
+
+          setTimeout(() => {
+            if (initialText) textSpan.textContent = initialText;
+          }, 1000);
+        });
+      }
+    });
+  }
+</script>

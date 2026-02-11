@@ -1,0 +1,81 @@
+---
+// src/components/Blog.astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostFilter from './PostFilter.tsx';
+
+interface Props {
+  lang: 'en' | 'zh-CN';
+  class?: string;
+}
+
+const { lang, class: className = 'prose' } = Astro.props;
+const isZh = lang === 'zh-CN';
+
+const paths = {
+  en: {
+    home: '/',
+    blog: '/blog/',
+  },
+  zh: {
+    home: '/zh-CN/',
+    blog: '/blog/zh-CN/',
+  },
+};
+
+const currentPaths = isZh ? paths.zh : paths.en;
+const targetPaths = isZh ? paths.en : paths.zh;
+const allPosts = await getCollection('blog');
+
+const serializedPosts = allPosts
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .map((post) => ({
+    slug: post.slug,
+    data: {
+      title: post.data.title,
+      description: post.data.description,
+      lang: post.data.lang,
+      tags: post.data.tags || [],
+      date: post.data.date.toISOString(),
+      cover: post.data.cover,
+    },
+  }));
+
+const pageTitle = isZh ? '日志' : 'Blog';
+const pageDesc = isZh ? '洪澜轩的个人主页' : 'Personal homepage of Lanxuan Hong.';
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} lang={lang}>
+  <nav aria-label="Navigation">
+    <a href={currentPaths.home}>
+      {isZh ? '首页' : 'Home'}
+    </a>
+    <a href={currentPaths.blog} class="active">
+      {isZh ? '日志' : 'Blog'}
+    </a>
+
+    <div class="lang-switch">
+      <a
+        href={isZh ? targetPaths.blog : '#'}
+        class={`lang-opt ${!isZh ? 'active' : ''}`}
+        aria-label="Switch to English"
+        aria-current={!isZh ? 'page' : undefined}
+      >
+        EN
+      </a>
+      <a
+        href={!isZh ? targetPaths.blog : '#'}
+        class={`lang-opt ${isZh ? 'active' : ''}`}
+        aria-label="切换到中文"
+        aria-current={isZh ? 'page' : undefined}
+      >
+        中
+      </a>
+      <div class={`lang-glider ${isZh ? 'right' : ''}`}></div>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <PostFilter client:load allPosts={serializedPosts} currentLang={lang} />
+  </main>
+</BaseLayout>
