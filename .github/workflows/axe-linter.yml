@@ -1,15 +1,36 @@
-name: Lint for accessibility issues
-on:
-  push:
-    pull_request:
+name: Accessibility CI (Complete)
+
+on: [push, pull_request]
 
 jobs:
-  build:
+  lint-code:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: dequelabs/axe-linter-action@v1
         with:
           api_key: ${{ secrets.AXE_LINTER_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  test-runtime:
+    needs: lint-code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Pa11y CI
+        run: npm install -g pa11y-ci start-server-and-test
+
+      - name: Build
+        run: npm run build
+
+      - name: Run Strict Runtime Analysis
+        run: npx start-server-and-test start http://localhost:3000 "pa11y-ci"
