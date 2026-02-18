@@ -1,5 +1,4 @@
 name: Lint for accessibility issues
-
 on:
   push:
     pull_request:
