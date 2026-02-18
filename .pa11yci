@@ -1,0 +1,16 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA", 
+    "timeout": 50000,
+    "wait": 1000,
+    "runners": [
+      "axe",
+      "htmlcs"
+    ]
+  },
+  "urls": [
+    "http://localhost:4321",
+    "http://localhost:4321/about", 
+    "http://localhost:4321/blog"
+  ]
+}
