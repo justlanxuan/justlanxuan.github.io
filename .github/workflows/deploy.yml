@@ -1,19 +1,15 @@
 name: Deploy Astro Site
 
 on:
-  # 只有推送到 main 分支时才触发（如果你的主分支叫 master，请把下面的 main 改成 master）
   push:
-    branches: [ main ]
-  # 允许你手动在 Actions 页面触发构建
+    branches: [main]
   workflow_dispatch:
 
-# 设置权限，允许 GITHUB_TOKEN 部署 GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 允许并发部署，新的会取消旧的
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -24,12 +20,9 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      
-      # 这一步非常重要，它会自动检测你用的是 npm, yarn 还是 pnpm
+
       - name: Install, build, and upload your site
         uses: withastro/action@v2
-        # withastro/action 是 Astro 官方写的脚本，它会自动运行 build 并找到 dist 文件夹
-        # 不需要你自己手动指定 path: ./dist，它全自动处理
 
   deploy:
     needs: build
