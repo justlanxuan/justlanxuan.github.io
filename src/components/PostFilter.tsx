@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
-import { Calendar, Tag, X } from 'lucide-react';
+import React, { useState, useMemo } from "react";
+import { Calendar, Tag, X } from "lucide-react";
 
 // --- 类型定义 ---
 interface PostData {
   title: string;
   description: string;
-  lang: 'zh-CN' | 'en';
+  lang: "zh-CN" | "en";
   tags: string[];
   date: string;
   cover?: string;
@@ -18,16 +18,22 @@ interface Post {
 
 interface PostFilterProps {
   allPosts: Post[];
-  currentLang: 'zh-CN' | 'en';
+  currentLang: "zh-CN" | "en";
 }
 
 // --- 高亮辅助组件 ---
-const HighlightText = ({ text, keyword }: { text: string; keyword: string }) => {
+const HighlightText = ({
+  text,
+  keyword,
+}: {
+  text: string;
+  keyword: string;
+}) => {
   if (!keyword || !keyword.trim()) {
     return <>{text}</>;
   }
-  const escapedKeyword = keyword.replace(/[.*+?^${}()|[]]/g, '\\$&');
-  const regex = new RegExp(`(${escapedKeyword})`, 'gi');
+  const escapedKeyword = keyword.replace(/[.*+?^${}()|[]]/g, "\\$&");
+  const regex = new RegExp(`(${escapedKeyword})`, "gi");
   const parts = text.split(regex);
 
   return (
@@ -46,37 +52,45 @@ const HighlightText = ({ text, keyword }: { text: string; keyword: string }) => 
 };
 
 export default function PostFilter({ allPosts, currentLang }: PostFilterProps) {
-  const [filterType, setFilterType] = useState<'all' | 'zh-CN' | 'en'>(currentLang);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState<"all" | "zh-CN" | "en">(
+    currentLang,
+  );
+  const [searchQuery, setSearchQuery] = useState("");
 
   const t = {
-    all: currentLang === 'zh-CN' ? '全部' : 'All',
-    cnOnly: currentLang === 'zh-CN' ? '仅中文' : 'Chinese Only',
-    enOnly: currentLang === 'zh-CN' ? '仅英文' : 'English Only',
-    searchPlaceholder: currentLang === 'zh-CN' ? '搜索日志或标签...' : 'Search logs or tags...',
-    noResults: currentLang === 'zh-CN' ? '没有找到匹配的文章' : 'No matching posts found.',
+    all: currentLang === "zh-CN" ? "全部" : "All",
+    cnOnly: currentLang === "zh-CN" ? "仅中文" : "Chinese Only",
+    enOnly: currentLang === "zh-CN" ? "仅英文" : "English Only",
+    searchPlaceholder:
+      currentLang === "zh-CN" ? "搜索日志或标签..." : "Search logs or tags...",
+    noResults:
+      currentLang === "zh-CN"
+        ? "没有找到匹配的文章"
+        : "No matching posts found.",
 
-    clear: currentLang === 'zh-CN' ? '清除' : 'Clear',
+    clear: currentLang === "zh-CN" ? "清除" : "Clear",
   };
 
   const filteredPosts = useMemo(() => {
     return allPosts.filter((post) => {
-      const langMatch = filterType === 'all' ? true : post.data.lang === filterType;
+      const langMatch =
+        filterType === "all" ? true : post.data.lang === filterType;
       const q = searchQuery.toLowerCase().trim();
       if (!q) return langMatch;
 
       const titleMatch = post.data.title.toLowerCase().includes(q);
       const descMatch = post.data.description.toLowerCase().includes(q);
-      const tagMatch = post.data.tags?.some((tag) => tag.toLowerCase().includes(q)) ?? false;
+      const tagMatch =
+        post.data.tags?.some((tag) => tag.toLowerCase().includes(q)) ?? false;
 
       return langMatch && (titleMatch || descMatch || tagMatch);
     });
   }, [allPosts, filterType, searchQuery]);
 
   const filterOptions = [
-    { id: 'all', label: t.all },
-    { id: 'zh-CN', label: t.cnOnly },
-    { id: 'en', label: t.enOnly },
+    { id: "all", label: t.all },
+    { id: "zh-CN", label: t.cnOnly },
+    { id: "en", label: t.enOnly },
   ];
 
   return (
@@ -89,10 +103,10 @@ export default function PostFilter({ allPosts, currentLang }: PostFilterProps) {
               <button
                 key={option.id}
                 onClick={() => setFilterType(option.id as any)}
-                className={`radio-item ${isActive ? 'active' : ''}`}
-                aria-pressed={isActive}
-              >
-                <span className={`custom-radio ${isActive ? 'active' : ''}`}></span>
+                className={`radio-item ${isActive ? "active" : ""}`}
+                aria-pressed={isActive}>
+                <span
+                  className={`custom-radio ${isActive ? "active" : ""}`}></span>
                 <span className="radio-label">{option.label}</span>
               </button>
             );
@@ -110,11 +124,9 @@ export default function PostFilter({ allPosts, currentLang }: PostFilterProps) {
           />
           {searchQuery && (
             <button
-              onClick={() => setSearchQuery('')}
-              className="search-clear-btn"
-              aria-label="Clear search"
-            >
-              <X />
+              onClick={() => setSearchQuery("")}
+              className="search-clear-btn">
+              <X aria-label="Clear search" />
             </button>
           )}
         </div>
@@ -128,28 +140,31 @@ export default function PostFilter({ allPosts, currentLang }: PostFilterProps) {
                 <time className="post-date">
                   <Calendar size={14} />
                   {new Date(post.data.date).toLocaleDateString(currentLang, {
-                    year: 'numeric',
-                    month: 'short',
-                    day: 'numeric',
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
                   })}
                 </time>
 
-                {filterType === 'all' && (
+                {filterType === "all" && (
                   <span className={`lang-badge ${post.data.lang}`}>
-                    {currentLang === 'en'
-                      ? post.data.lang === 'zh-CN'
-                        ? 'CN'
-                        : 'EN'
-                      : post.data.lang === 'zh-CN'
-                        ? '中'
-                        : '英'}
+                    {currentLang === "en"
+                      ? post.data.lang === "zh-CN"
+                        ? "CN"
+                        : "EN"
+                      : post.data.lang === "zh-CN"
+                        ? "中"
+                        : "英"}
                   </span>
                 )}
 
                 {post.data.tags && post.data.tags.length > 0 && (
                   <div className="post-tags">
                     {post.data.tags.map((tag) => (
-                      <span key={tag} className="tag-item">
+                      <span
+                        key={tag}
+                        className="tag-item"
+                        aria-label="tag-item">
                         <Tag size={12} />
                         <span>
                           <HighlightText text={tag} keyword={searchQuery} />
@@ -167,7 +182,10 @@ export default function PostFilter({ allPosts, currentLang }: PostFilterProps) {
               </h2>
 
               <p className="post-desc">
-                <HighlightText text={post.data.description} keyword={searchQuery} />
+                <HighlightText
+                  text={post.data.description}
+                  keyword={searchQuery}
+                />
               </p>
             </article>
           ))
@@ -176,11 +194,10 @@ export default function PostFilter({ allPosts, currentLang }: PostFilterProps) {
             <p>{t.noResults}</p>
             <button
               onClick={() => {
-                setFilterType('all');
-                setSearchQuery('');
+                setFilterType("all");
+                setSearchQuery("");
               }}
-              className="clear-filter-link"
-            >
+              className="clear-filter-link">
               {t.clear}
             </button>
           </div>

@@ -1,0 +1,14 @@
+
+import __ASTRO_IMAGE_IMPORT_2peCxF from "image.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Ftactile-sensor%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_213ONE from "image.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fbeishangyouji%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_2wLcNT from "image-1.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fbeishangyouji%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_16qH3D from "image-2.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fbeishangyouji%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_ZjSMGC from "image-3.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fbeishangyouji%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_Z2FBBB from "image.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_Z21CB00 from "image-1.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_Z163iPI from "image-2.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_Zat0Gr from "image-3.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_K6hrP from "image-4.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md";
+import __ASTRO_IMAGE_IMPORT_1FFzB7 from "image-5.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md";
+export default new Map([["image.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Ftactile-sensor%2Findex.md", __ASTRO_IMAGE_IMPORT_2peCxF], ["image.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fbeishangyouji%2Findex.md", __ASTRO_IMAGE_IMPORT_213ONE], ["image-1.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fbeishangyouji%2Findex.md", __ASTRO_IMAGE_IMPORT_2wLcNT], ["image-2.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fbeishangyouji%2Findex.md", __ASTRO_IMAGE_IMPORT_16qH3D], ["image-3.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fbeishangyouji%2Findex.md", __ASTRO_IMAGE_IMPORT_ZjSMGC], ["image.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md", __ASTRO_IMAGE_IMPORT_Z2FBBB], ["image-1.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md", __ASTRO_IMAGE_IMPORT_Z21CB00], ["image-2.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md", __ASTRO_IMAGE_IMPORT_Z163iPI], ["image-3.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md", __ASTRO_IMAGE_IMPORT_Zat0Gr], ["image-4.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md", __ASTRO_IMAGE_IMPORT_K6hrP], ["image-5.png?astroContentImageFlag=&importer=src%2Fcontent%2Fblog%2Fwuxitachun%2Findex.md", __ASTRO_IMAGE_IMPORT_1FFzB7]]);
+		

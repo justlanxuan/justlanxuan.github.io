@@ -1,9 +1,9 @@
 ---
-title: 'Making My Website Accessible'
-description: 'The technical decisions and design considerations behind rebuilding my personal website with accessibility in mind.'
+title: "Making My Website Accessible"
+description: "The technical decisions and design considerations behind rebuilding my personal website with accessibility in mind."
 date: 2026-02-08
-tags: ['accessibility', 'tech']
-lang: 'en'
+tags: ["accessibility", "tech"]
+lang: "en"
 ---
 
 # Why Accessibility: A Shift of Perspective
