@@ -1,16 +1,23 @@
 {
   "defaults": {
-    "standard": "WCAG2AA", 
+    "standard": "WCAG2AA",
     "timeout": 50000,
     "wait": 1000,
     "runners": [
       "axe",
       "htmlcs"
-    ]
+    ],
+    "chromeLaunchConfig": {
+      "args": [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage"
+      ]
+    }
   },
   "urls": [
     "http://localhost:4321",
-    "http://localhost:4321/about", 
+    "http://localhost:4321/about",
     "http://localhost:4321/blog"
   ]
 }
